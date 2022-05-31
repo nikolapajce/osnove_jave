@@ -22,7 +22,7 @@ public class Student {
     private int brIndeksa;
     private String punoIme;
     private String tipStudija;
-    ArrayList<Ispit> predmeti = new ArrayList();
+    private ArrayList<Ispit> predmeti = new ArrayList();
 
     public Student(int brIndeksa, String punoIme, String tipStudija) {
         this.brIndeksa = brIndeksa;
