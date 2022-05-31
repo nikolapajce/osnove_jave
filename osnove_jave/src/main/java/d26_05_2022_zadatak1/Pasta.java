@@ -15,7 +15,7 @@ import java.util.ArrayList;
 //naziv - cena.din
 //Cena paste je cena.din
 public class Pasta {
-    ArrayList <d26_05_2022_zadatak1.Sastojak> pasta = new ArrayList<d26_05_2022_zadatak1.Sastojak>();
+    private ArrayList <d26_05_2022_zadatak1.Sastojak> pasta = new ArrayList<d26_05_2022_zadatak1.Sastojak>();
 
     public void dodaj(d26_05_2022_zadatak1.Sastojak sastojak){
         pasta.add(sastojak);
@@ -25,6 +25,7 @@ public class Pasta {
         for (int i = 0; i < pasta.size(); i++) {
             if (pasta.get(i).getNaziv().equals(naziv)) {
                 pasta.remove(i);
+                i--;
             }
         }
     }
