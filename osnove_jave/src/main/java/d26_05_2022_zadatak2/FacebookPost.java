@@ -47,34 +47,29 @@ public class FacebookPost {
         this.tekst = tekst;
     }
 
-    ArrayList <Reakcija> reakcijeNaPost = new ArrayList<Reakcija>();
+    private ArrayList<Reakcija> reakcijeNaPost = new ArrayList<Reakcija>();
 
-    public void reaguj (Reakcija reakcija){
+    public void reaguj(Reakcija reakcija) {
+        for (int i = 0; i < this.reakcijeNaPost.size(); i++) {
+            if (this.reakcijeNaPost.get(i).getPunoIme().equals(reakcija.getPunoIme())) {
+                this.reakcijeNaPost.remove(i);
+            }
+        }
         reakcijeNaPost.add(reakcija);
     }
 
-    private int brojReakcija (String tip){
-        int brLajkova = 0;
-        int brSmajlija = 0;
-        int brSrca = 0;
+
+    private int brojReakcija(String tip) {
+        int brojac = 0;
         for (int i = 0; i < reakcijeNaPost.size(); i++) {
-            if (reakcijeNaPost.get(i).getTip().equals("like")){
-                brLajkova = brLajkova + 1;
-            } else if (reakcijeNaPost.get(i).getTip().equals("srce")){
-                brSrca = brSrca + 1;
-            } else {
-                brSmajlija = brSmajlija + 1;
+            if (reakcijeNaPost.get(i).getTip().equals(tip)) {
+                brojac++;
             }
         }
-        if(tip.equals("like")){
-            return brLajkova;
-        } else if (tip.equals("srce")){
-            return brSrca;
-        } else {
-            return brSmajlija;
-        }
+        return brojac;
     }
-    public void stampa(){
+
+    public void stampa() {
         System.out.println(Ime);
         System.out.println(tekst);
         System.out.println("Smajli: " + this.brojReakcija("smajli") + " | Like: " + this.brojReakcija("like") + " | Srce: " + this.brojReakcija("srce"));
